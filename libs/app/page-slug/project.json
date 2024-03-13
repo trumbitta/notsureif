@@ -1,0 +1,8 @@
+{
+  "name": "page-slug",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/app/page-slug/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

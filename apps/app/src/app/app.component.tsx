@@ -1,5 +1,7 @@
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
 
+import { PageSlug } from '@notsureif.me/page-slug';
+
 export const App = () => {
   return (
     <Routes>
@@ -24,6 +26,8 @@ export const App = () => {
             </article>
           }
         />
+
+        <Route path=":slug" element={<PageSlug />} />
 
         <Route
           path="*"
