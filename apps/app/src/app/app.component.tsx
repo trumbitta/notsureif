@@ -1,6 +1,7 @@
 import { Link, Outlet, Route, Routes } from 'react-router-dom';
 
 import { PageSlug } from '@notsureif.me/page-slug';
+import styled from 'styled-components';
 
 export const App = () => {
   return (
@@ -8,14 +9,9 @@ export const App = () => {
       <Route
         path="/"
         element={
-          <>
-            <header>
-              <h1>Imma layout</h1>
-            </header>
-            <main>
-              <Outlet />
-            </main>
-          </>
+          <Main>
+            <Outlet />
+          </Main>
         }
       >
         <Route
@@ -23,6 +19,7 @@ export const App = () => {
           element={
             <article>
               <h1>Home!</h1>
+              <p>Explain what's this, why this, link a couple examples.</p>
             </article>
           }
         />
@@ -44,3 +41,8 @@ export const App = () => {
     </Routes>
   );
 };
+
+const Main = styled.main`
+  display: grid;
+  height: 100%;
+`;

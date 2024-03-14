@@ -1,0 +1,8 @@
+{
+  "name": "shared-styling",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/shared/styling/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}

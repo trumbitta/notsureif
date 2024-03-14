@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@notsureif.me/page-slug": ["libs/app/page-slug/src/index.ts"]
+      "@notsureif.me/page-slug": ["libs/app/page-slug/src/index.ts"],
+      "@notsureif.me/shared/styling": ["libs/shared/styling/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
