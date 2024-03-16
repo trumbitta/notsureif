@@ -1,44 +1,45 @@
-import { useParams } from 'react-router-dom';
-import { AutoTextSize } from 'auto-text-size';
-import styled from 'styled-components';
+import { useEffect, useRef } from 'react';
 
-import { rootFontSizeAbsolute } from '@notsureif.me/shared/styling';
+import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import fitty from 'fitty';
+
+import {
+  accent,
+  rootFontSizeAbsolute,
+  text,
+} from '@notsureif.me/shared/styling';
+import { useHypeText } from '@notsureif.me/shared/utils';
 
 export const PageSlug = () => {
+  const theThingRef = useRef<HTMLParagraphElement>(null);
+
   const { slug } = useParams();
   const theThing = slug ? slug.split('-').join(' ') : '';
-
   const maxFontSizeAbsolute = 1000;
+
+  const { hypeSentence, reaffirmingIntro } = useHypeText();
+
+  useEffect(() => {
+    if (theThingRef.current) {
+      fitty('.fit', {
+        minSize: rootFontSizeAbsolute,
+        maxSize: maxFontSizeAbsolute,
+      });
+    }
+  }, []);
 
   return (
     <Container>
-      <TextContainer>
-        <AutoTextSize
-          as="span"
-          maxFontSizePx={maxFontSizeAbsolute}
-          minFontSizePx={rootFontSizeAbsolute}
-        >
-          Heck yeah!
-        </AutoTextSize>
-      </TextContainer>
-      <IntroContainer>
-        <AutoTextSize
-          as="span"
-          maxFontSizePx={maxFontSizeAbsolute}
-          minFontSizePx={rootFontSizeAbsolute}
-        >
-          You sure are
-        </AutoTextSize>
-      </IntroContainer>
-      <TextContainer>
-        <AutoTextSize
-          as="span"
-          maxFontSizePx={maxFontSizeAbsolute}
-          minFontSizePx={rootFontSizeAbsolute}
-        >
-          {theThing}!
-        </AutoTextSize>
-      </TextContainer>
+      <div>
+        <TextContainer>{hypeSentence}</TextContainer>
+      </div>
+      <div>
+        <IntroContainer>{reaffirmingIntro}</IntroContainer>
+      </div>
+      <div>
+        <MainTextContainer ref={theThingRef}>{theThing}</MainTextContainer>
+      </div>
     </Container>
   );
 };
@@ -48,17 +49,23 @@ const Container = styled.article`
   grid-template-rows: auto auto 1fr;
   grid-gap: 2vw;
   align-self: center;
-  max-width: 100%;
+  text-align: center;
 `;
 
 const TextContainer = styled.p`
-  color: red;
-  max-width: 100%;
-  margin: 0;
+  display: inline-block;
+  white-space: nowrap;
+  margin: 0 auto;
   padding: 0;
+  color: ${accent};
+  text-align: center;
 `;
 
 const IntroContainer = styled(TextContainer)`
-  width: 50%;
-  margin-inline: auto;
+  color: ${text};
+`;
+
+const MainTextContainer = styled(TextContainer).attrs({ className: 'fit' })`
+  font-weight: 700;
+  text-transform: uppercase;
 `;

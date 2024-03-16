@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@notsureif.me/page-slug": ["libs/app/page-slug/src/index.ts"],
-      "@notsureif.me/shared/styling": ["libs/shared/styling/src/index.ts"]
+      "@notsureif.me/shared/styling": ["libs/shared/styling/src/index.ts"],
+      "@notsureif.me/shared/utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
